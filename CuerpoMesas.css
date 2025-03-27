@@ -28,7 +28,7 @@ body {
 .mesa {
     width: 70px;
     height: 70px;
-    background-color: green;
+    background-color: red; /* Cambiado a rojo para que las mesas inicien en rojo */
     color: white;
     display: flex;
     align-items: center;
@@ -40,7 +40,7 @@ body {
 }
 
 .mesa.abierta {
-    background-color: red;
+    background-color: green;
 }
 
 /* Efecto de desenfoque */
