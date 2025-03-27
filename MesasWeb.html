@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <button id="toggleArea">Terraza</button>
+        <h1 id="areaTitle">Salón</h1>
+        <div id="mesas" class="grid-container"></div>
+    </div>
+
+    <div id="menuPopup" class="popup hidden">
+        <h2>Mesa <span id="mesaNumero"></span></h2>
+        <button id="abrirMesa">Abrir Mesa</button>
+        <div>
+            <label>Personas:</label>
+            <button id="menosPersonas">-</button>
+            <span id="contadorPersonas">0</span>
+            <button id="masPersonas">+</button>
+        </div>
+        <div>
+            <label>Mesero:</label>
+            <input type="text" id="meseroInput">
+        </div>
+        <div>
+            <label>Cliente:</label>
+            <input type="text" id="clienteInput">
+        </div>
+        <button id="irAMenu">Ir al Menú</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
