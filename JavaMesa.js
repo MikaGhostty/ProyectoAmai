@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const contadorPersonas = document.getElementById("contadorPersonas");
     const toggleAreaBtn = document.getElementById("toggleArea");
     const areaTitle = document.getElementById("areaTitle");
+    const overlay = document.getElementById("overlay");
     let currentMesa = null;
     let area = "salon";
 
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentMesa = mesa;
                 mesaNumero.textContent = mesa.dataset.numero;
                 menuPopup.style.display = "block";
+                overlay.style.display = "block";
             });
             mesasContainer.appendChild(mesa);
         }
@@ -52,9 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
         contadorPersonas.textContent = count + 1;
     });
 
-    window.addEventListener("click", function (event) {
-        if (!menuPopup.contains(event.target) && event.target.className !== "mesa") {
-            menuPopup.style.display = "none";
-        }
+    overlay.addEventListener("click", function () {
+        menuPopup.style.display = "none";
+        overlay.style.display = "none";
     });
 });
