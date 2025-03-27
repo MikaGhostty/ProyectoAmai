@@ -12,25 +12,32 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentMesa = null;
     let area = "salon";
 
+    // Generar 15 mesas dinámicamente
     function renderMesas() {
-        mesasContainer.innerHTML = "";
+        mesasContainer.innerHTML = ""; // Limpia el contenedor antes de volver a renderizar
         for (let i = 1; i <= 15; i++) {
             let mesa = document.createElement("div");
             mesa.classList.add("mesa");
             mesa.textContent = i;
             mesa.dataset.numero = i;
+
+            // Evento para abrir el menú emergente
             mesa.addEventListener("click", function () {
                 currentMesa = mesa;
                 mesaNumero.textContent = mesa.dataset.numero;
+                contadorPersonas.textContent = "0"; // Resetear contador de personas
                 menuPopup.style.display = "block";
                 overlay.style.display = "block";
             });
+
             mesasContainer.appendChild(mesa);
         }
     }
 
+    // Renderiza las mesas por primera vez
     renderMesas();
 
+    // Alternar entre "Salón" y "Terraza"
     toggleAreaBtn.addEventListener("click", function () {
         area = area === "salon" ? "terraza" : "salon";
         areaTitle.textContent = area === "salon" ? "Salón" : "Terraza";
@@ -38,12 +45,16 @@ document.addEventListener("DOMContentLoaded", function () {
         renderMesas();
     });
 
+    // Cambiar el color de la mesa al abrirla
     abrirMesaBtn.addEventListener("click", function () {
         if (currentMesa) {
             currentMesa.classList.add("abierta");
+            menuPopup.style.display = "none";
+            overlay.style.display = "none";
         }
     });
 
+    // Control de personas en la mesa
     menosPersonas.addEventListener("click", function () {
         let count = parseInt(contadorPersonas.textContent);
         if (count > 0) contadorPersonas.textContent = count - 1;
@@ -54,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         contadorPersonas.textContent = count + 1;
     });
 
+    // Cerrar el menú emergente al hacer clic fuera
     overlay.addEventListener("click", function () {
         menuPopup.style.display = "none";
         overlay.style.display = "none";

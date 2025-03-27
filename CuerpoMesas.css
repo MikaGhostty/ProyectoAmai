@@ -15,32 +15,35 @@ body {
     border: none;
     cursor: pointer;
     margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .mesas-container {
     display: grid;
-    grid-template-columns: repeat(5, 60px);
+    grid-template-columns: repeat(5, 70px);
     gap: 10px;
     justify-content: center;
 }
 
 .mesa {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     background-color: green;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.3s;
 }
 
 .mesa.abierta {
     background-color: red;
 }
 
+/* Efecto de desenfoque */
 #overlay {
     display: none;
     position: fixed;
@@ -52,6 +55,7 @@ body {
     backdrop-filter: blur(5px);
 }
 
+/* Menú emergente */
 .menu-popup {
     display: none;
     position: fixed;
@@ -61,4 +65,19 @@ body {
     background: white;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+.menu-popup input {
+    width: 80%;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
 }
