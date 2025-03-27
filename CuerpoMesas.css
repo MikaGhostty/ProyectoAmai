@@ -66,8 +66,10 @@ body {
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 250px;
+    width: 300px;
     text-align: center;
+    overflow-y: auto; /* Permitir desplazamiento */
+    max-height: 80%; /* Limitar la altura del menú */
 }
 
 .menu-popup input {
@@ -80,4 +82,20 @@ button {
     padding: 5px 10px;
     margin: 5px;
     cursor: pointer;
+}
+
+.producto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.producto button {
+    margin: 0 5px;
+}
+
+#carrito {
+    margin-top: 20px;
+    text-align: left;
 }

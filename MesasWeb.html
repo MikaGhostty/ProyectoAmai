@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Mesas</title>
-    <link rel="stylesheet" href="CuerpoMesas.css"> <!-- Cambiado a CuerpoMesas.css -->
+    <link rel="stylesheet" href="CuerpoMesas.css">
 </head>
 <body>
     <div class="container">
@@ -16,7 +16,7 @@
     <!-- Overlay para efecto de desenfoque -->
     <div id="overlay"></div>
 
-    <!-- Menú emergente -->
+    <!-- Menú emergente para la mesa -->
     <div id="menuPopup" class="menu-popup">
         <h2>Mesa <span id="mesaNumero"></span></h2>
         <button id="abrirMesa">Abrir Mesa</button>
@@ -28,8 +28,21 @@
         </div>
         <label>Mesero: <input type="text" id="meseroNombre"></label>
         <label>Cliente: <input type="text" id="clienteNombre"></label>
+        <button id="verCarta">Ver Carta</button>
     </div>
 
-    <script src="JavaMesa.js"></script> <!-- Asegúrate de que el nombre del archivo sea JavaMesa.js -->
+    <!-- Menú de productos -->
+    <div id="cartaPopup" class="menu-popup">
+        <h2>Carta de Productos</h2>
+        <div id="productosContainer"></div>
+        <div id="carrito">
+            <h3>Carrito</h3>
+            <ul id="carritoList"></ul>
+            <p>Total: <span id="totalPrecio">0</span></p>
+            <button id="cerrarCarta">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="JavaMesa.js"></script>
 </body>
 </html>
