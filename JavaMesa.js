@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentMesa.style.backgroundColor = "green"; // Cambiar a color verde
                 abrirMesaBtn.textContent = "Cerrar Mesa"; // Cambiar texto a "Cerrar Mesa"
             }
+            // No cerrar el menú al abrir/cerrar la mesa
         }
     });
 
@@ -94,8 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar la carta de productos
     verCartaBtn.addEventListener("click", function () {
         mostrarCarta();
-        menuPopup.style.display = "none";
-        overlay.style.display = "block";
+        // No cerrar el menú de la mesa al abrir la carta
+        // menuPopup.style.display = "none"; // Comentado para evitar que se cierre
         cartaPopup.style.display = "block";
     });
 
