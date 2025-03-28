@@ -42,13 +42,18 @@ document.addEventListener("DOMContentLoaded", function () {
             mesa.textContent = i;
             mesa.dataset.numero = i;
 
-            // Evento para abrir el menú emergente
+            // Evento para abrir o cerrar la mesa
             mesa.addEventListener("click", function () {
-                currentMesa = mesa;
-                mesaNumero.textContent = mesa.dataset.numero;
-                contadorPersonas.textContent = "0"; // Resetear contador de personas
-                menuPopup.style.display = "block";
-                overlay.style.display = "block";
+                if (mesa.classList.contains("abierta")) {
+                    mesa.classList.remove("abierta"); // Cerrar la mesa
+                    mesa.style.backgroundColor = "red"; // Cambiar a color rojo
+                } else {
+                    currentMesa = mesa;
+                    mesaNumero.textContent = mesa.dataset.numero;
+                    contadorPersonas.textContent = "0"; // Resetear contador de personas
+                    menuPopup.style.display = "block";
+                    overlay.style.display = "block";
+                }
             });
 
             mesasContainer.appendChild(mesa);
@@ -70,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     abrirMesaBtn.addEventListener("click", function () {
         if (currentMesa) {
             currentMesa.classList.add("abierta");
+            currentMesa.style.backgroundColor = "green"; // Cambiar a color verde
             menuPopup.style.display = "none";
             overlay.style.display = "none";
         }

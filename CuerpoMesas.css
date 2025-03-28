@@ -66,8 +66,8 @@ body {
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 300px;
-    max-height: 120%; /* Aumentar la altura máxima */
+    width: 300px; /* Reducido en un 30% de 300px */
+    max-height: 84%; /* Reducido en un 30% de 120% */
     overflow-y: auto; /* Permitir desplazamiento */
 }
 
