@@ -109,6 +109,8 @@ body {
     display: flex;
     flex-direction: column; /* Organizar en columna */
     gap: 10px; /* Espaciado entre categorías */
+    max-height: 400px; /* Limitar la altura del contenedor de secciones */
+    overflow-y: auto; /* Permitir desplazamiento */
 }
 
 .seccion {
