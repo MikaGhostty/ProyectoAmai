@@ -75,7 +75,7 @@ body {
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 300px; /* Ancho del menú de productos */
+    width: 400px; /* Ancho del menú de productos */
     max-height: 80%; /* Limitar la altura */
     overflow-y: auto; /* Permitir desplazamiento */
     z-index: 2; /* Asegurarse de que esté por encima de otros elementos */
@@ -102,7 +102,6 @@ body {
     cursor: pointer;
     border-radius: 5px; /* Esquinas redondeadas */
     text-align: center;
-    list-style-type: none; /* Quitar viñetas por defecto */
 }
 
 .seccion:hover {
@@ -114,20 +113,4 @@ body {
     margin-left: 10px; /* Espacio para las secciones */
     padding-left: 10px; /* Espaciado a la izquierda */
     flex-grow: 1; /* Ocupa el espacio restante */
-}
-
-.producto {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
-    text-align: left;
-}
-
-.producto button {
-    margin: 0 5px;
-}
-
-#carrito {
-    margin-top: 20px;
-    text-align: left;
 }
