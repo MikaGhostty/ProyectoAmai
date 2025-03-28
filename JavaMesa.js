@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     const mesasContainer = document.getElementById("mesas");
-    const menuPopup = document.getElementById("menuPopup");
     const cartaPopup = document.getElementById("cartaPopup");
+    const overlay = document.getElementById("overlay");
+    const verCartaBtn = document.getElementById("verCarta");
+    const cerrarCartaBtn = document.getElementById("cerrarCarta");
+    const productosContainer = document.getElementById("productosContainer");
+    const carritoList = document.getElementById("carritoList");
+    const totalPrecio = document.getElementById("totalPrecio");
+    const seccionesContainer = document.getElementById("seccionesContainer");
+    const menuPopup = document.getElementById("menuPopup");
     const mesaNumero = document.getElementById("mesaNumero");
     const abrirMesaBtn = document.getElementById("abrirMesa");
     const menosPersonas = document.getElementById("menosPersonas");
@@ -9,19 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const contadorPersonas = document.getElementById("contadorPersonas");
     const toggleAreaBtn = document.getElementById("toggleArea");
     const areaTitle = document.getElementById("areaTitle");
-    const overlay = document.getElementById("overlay");
-    const verCartaBtn = document.getElementById("verCarta");
-    const productosContainer = document.getElementById("productosContainer");
-    const carritoList = document.getElementById("carritoList");
-    const totalPrecio = document.getElementById("totalPrecio");
-    const cerrarCartaBtn = document.getElementById("cerrarCarta");
-    const seccionesContainer = document.getElementById("seccionesContainer");
 
     let currentMesa = null;
     let area = "salon";
     let carrito = [];
 
-    // Ejemplo de productos (deberías reemplazar esto con los datos de tu PDF)
+    // Ejemplo de productos
     const productos = [
         { nombre: "Cerveza", precio: 5, categoria: "Bebidas" },
         { nombre: "Café", precio: 3, categoria: "Cafeteria" },
@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { nombre: "Pizza", precio: 10, categoria: "Comida" },
         { nombre: "Hamburguesa", precio: 8, categoria: "Comida" },
         { nombre: "Ensalada", precio: 6, categoria: "Comida" },
-        // Agrega más productos según sea necesario
     ];
 
     // Generar secciones
@@ -115,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (datosMesa) {
                     const { cantidad, nombres } = JSON.parse(datosMesa);
                     contadorPersonas.textContent = cantidad;
-                    // Aquí puedes mostrar los nombres si es necesario
                 } else {
                     contadorPersonas.textContent = "0"; // Resetear contador de personas
                 }
@@ -155,8 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 abrirMesaBtn.textContent = "Abrir Mesa"; // Cambiar texto a "Abrir Mesa"
                 // Limpiar datos de localStorage
                 localStorage.removeItem(`mesa_${mesaNumero}`);
-                carrito = []; // Limpiar el carrito
-                actualizarCarrito(); // Actualizar la vista del carrito
             } else {
                 // Abrir la mesa
                 currentMesa.classList.add("abierta");
@@ -204,8 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar la carta de productos
     verCartaBtn.addEventListener("click", function () {
         mostrarCarta();
-        cartaPopup.style.display = "block"; // Mostrar la carta
         overlay.style.display = "block"; // Mostrar el overlay
+        cartaPopup.style.display = "block"; // Mostrar el menú de la carta
     });
 
     // Mostrar productos en la carta
@@ -299,14 +295,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cerrar el menú de la carta
     cerrarCartaBtn.addEventListener("click", function () {
-        cartaPopup.style.display = "none";
-        overlay.style.display = "none";
+        cartaPopup.style.display = "none"; // Ocultar el menú de la carta
+        overlay.style.display = "none"; // Ocultar el overlay
     });
 
     // Cerrar el menú emergente al hacer clic fuera
     overlay.addEventListener("click", function () {
-        menuPopup.style.display = "none";
-        cartaPopup.style.display = "none";
-        overlay.style.display = "none";
+        cartaPopup.style.display = "none"; // Ocultar el menú de la carta
+        overlay.style.display = "none"; // Ocultar el overlay
     });
 });

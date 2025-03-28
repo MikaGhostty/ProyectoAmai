@@ -52,44 +52,42 @@ body {
 
 /* Efecto de desenfoque */
 #overlay {
-    display: none;
+    display: none; /* Ocultar por defecto */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    z-index: 1; /* Asegurarse de que esté por encima de otros elementos */
 }
 
 /* Menú emergente */
 .menu-popup {
-    display: none;
+    display: none; /* Ocultar por defecto */
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajustar posición */
     background: white;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     width: 300px; /* Ancho del menú de productos */
-    max-height: 80%; /* Limitar la altura del menú */
+    max-height: 80%; /* Limitar la altura */
     overflow-y: auto; /* Permitir desplazamiento */
     z-index: 2; /* Asegurarse de que esté por encima de otros elementos */
 }
 
-/* Contenedor de secciones y productos */
+/* Contenedor de secciones */
 #seccionesContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 150px; /* Ancho de las secciones */
     height: 100%;
     background: transparent; /* Fondo transparente */
     padding: 20px;
     border-right: 1px solid #ccc; /* Línea divisoria */
-    z-index: 1; /* Asegurarse de que esté detrás del menú */
+    float: left; /* Flotar a la izquierda */
 }
 
 .seccion {
