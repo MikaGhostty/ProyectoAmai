@@ -4,38 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Mesas</title>
-    <link rel="stylesheet" href="CuerpoMesas.css"> <!-- Asegúrate de que el nombre del archivo CSS sea correcto -->
+    <link rel="stylesheet" href="CuerpoMesas.css"> <!-- Asegúrate de que el archivo CSS existe -->
 </head>
 <body>
+
+    <!-- Contenedor principal -->
     <div class="container">
         <button id="toggleArea">Terraza</button>
         <h1 id="areaTitle">Salón</h1>
-        <div id="mesas" class="mesas-container"></div> <!-- Contenedor para las mesas -->
+        <div id="mesas" class="mesas-container"></div> <!-- Contenedor de mesas -->
     </div>
 
-    <!-- Overlay para efecto de desenfoque -->
+    <!-- Overlay para desenfoque al abrir popups -->
     <div id="overlay"></div>
 
-    <!-- Menú emergente para la mesa -->
+    <!-- Menú emergente para la mesa seleccionada -->
     <div id="menuPopup" class="menu-popup">
         <h2>Mesa <span id="mesaNumero"></span></h2>
         <button id="abrirMesa">Abrir Mesa</button>
-        <div>
+
+        <div class="mesa-detalles">
             <label>Personas:</label>
             <button id="menosPersonas">-</button>
             <span id="contadorPersonas">0</span>
             <button id="masPersonas">+</button>
         </div>
+
         <label>Mesero: <input type="text" id="meseroNombre"></label>
         <label>Cliente: <input type="text" id="clienteNombre"></label>
-        <button id="verCarta">Ver Carta</button> <!-- Botón para ver la carta dentro del menú de la mesa -->
+
+        <div class="menu-popup-buttons">
+            <button id="verCarta">Ver Carta</button>
+            <button id="cerrarMenu">Cerrar</button> <!-- Nuevo botón para cerrar -->
+        </div>
     </div>
 
     <!-- Menú emergente para la carta de productos -->
     <div id="cartaPopup" class="menu-popup">
         <h2>Carta de Productos</h2>
-        <div id="seccionesContainer"></div> <!-- Contenedor para las secciones -->
-        <div id="productosContainer"></div> <!-- Contenedor para los productos -->
+        <div id="seccionesContainer"></div> <!-- Secciones de productos -->
+        <div id="productosContainer"></div> <!-- Productos por categoría -->
+
+        <!-- Carrito de compras -->
         <div id="carrito">
             <h3>Carrito</h3>
             <ul id="carritoList"></ul>
@@ -44,6 +54,6 @@
         </div>
     </div>
 
-    <script src="JavaMesa.js"></script> <!-- Asegúrate de que el nombre del archivo JavaScript sea correcto -->
+    <script src="JavaMesa.js"></script> <!-- Asegúrate de que el archivo JS existe -->
 </body>
 </html>
