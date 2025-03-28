@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 1; i <= 15; i++) {
             let mesa = document.createElement("div");
             mesa.classList.add("mesa");
-            mesa.textContent = i;
+            mesa.textContent = i; // Asignar el número de la mesa
             mesa.dataset.numero = i;
 
             // Evento para abrir el menú emergente
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
         area = area === "salon" ? "terraza" : "salon";
         areaTitle.textContent = area === "salon" ? "Salón" : "Terraza";
         toggleAreaBtn.textContent = area === "salon" ? "Terraza" : "Salón";
-        renderMesas();
+        renderMesas(); // Volver a renderizar las mesas
     });
 
     // Cambiar el color de la mesa al abrirla
@@ -95,9 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar la carta de productos
     verCartaBtn.addEventListener("click", function () {
         mostrarCarta();
-        // No cerrar el menú de la mesa al abrir la carta
-        // menuPopup.style.display = "none"; // Comentado para evitar que se cierre
-        cartaPopup.style.display = "block";
+        cartaPopup.style.display = "block"; // Mostrar la carta
     });
 
     // Mostrar productos en la carta
