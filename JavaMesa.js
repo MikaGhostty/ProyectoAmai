@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Ejemplo de productos
     const productos = [
         { nombre: "Americano Tezuka", precio: 2000, categoria: "Cafés" },
-        { nombre: "CappuccinoMiyazaki", precio: 3500, categoria: "Cafés" },
+        { nombre: "Cappuccino Miyazaki", precio: 3500, categoria: "Cafés" },
         { nombre: "Latte Macchiato", precio: 4000, categoria: "Cafés" },
         { nombre: "Café Chopper", precio: 4800, categoria: "Cafés" },
         { nombre: "Afogato Mediano", precio: 3500, categoria: "Cafés" },
@@ -94,6 +94,15 @@ document.addEventListener("DOMContentLoaded", function () {
         { nombre: "Ponyo Loves Ham", precio: 5500, categoria: "Salados" },
         { nombre: "Amai Porumo", precio: 6000, categoria: "Salados" },
     ];
+
+    // Cargar el carrito desde localStorage
+    function cargarCarritoDesdeLocalStorage() {
+        const carritoEnLocalStorage = localStorage.getItem("carrito");
+        if (carritoEnLocalStorage) {
+            carrito = JSON.parse(carritoEnLocalStorage);
+            actualizarCarrito();
+        }
+    }
 
     // Generar secciones
     function renderSecciones() {
@@ -195,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Renderiza las mesas por primera vez
     renderMesas();
     renderSecciones(); // Renderizar secciones al cargar la página
+    cargarCarritoDesdeLocalStorage(); // Cargar el carrito al iniciar la aplicación
 
     // Alternar entre "Salón" y "Terraza"
     toggleAreaBtn.addEventListener("click", function () {

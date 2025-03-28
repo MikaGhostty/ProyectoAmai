@@ -163,6 +163,7 @@ body {
     background: #f8f8f8;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 400px; /* Limitar la altura del carrito */
 }
 
 #carrito h3 {
