@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", function () {
         { nombre: "Jugo de Naranja", precio: 4, categoria: "Jugos" },
         { nombre: "Té Verde", precio: 2, categoria: "Te" },
         { nombre: "Infusión de Manzanilla", precio: 2.5, categoria: "Infusiones" },
+        { nombre: "Pizza", precio: 8, categoria: "Comidas" }, // Nueva categoría
+        { nombre: "Hamburguesa", precio: 7, categoria: "Comidas" }, // Nueva categoría
+        { nombre: "Ensalada", precio: 6, categoria: "Comidas" }, // Nueva categoría
         // Agrega más productos según sea necesario
     ];
 

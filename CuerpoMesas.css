@@ -67,9 +67,8 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     width: 300px;
-    text-align: center;
+    max-height: 120%; /* Aumentar la altura máxima */
     overflow-y: auto; /* Permitir desplazamiento */
-    max-height: 80%; /* Limitar la altura del menú */
 }
 
 .menu-popup input {
