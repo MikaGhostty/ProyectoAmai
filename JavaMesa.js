@@ -305,4 +305,10 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.style.display = "none"; // Ocultar el overlay
         menuPopup.style.display = "none"; // Ocultar el menú de la mesa
     });
+
+    // Cerrar el menú de la mesa
+    document.getElementById("cerrarMenu").addEventListener("click", function () {
+        menuPopup.style.display = "none"; // Ocultar el menú de la mesa
+        overlay.style.display = "none"; // Ocultar el overlay
+    });
 });
