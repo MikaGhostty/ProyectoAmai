@@ -1,3 +1,6 @@
+
+Run
+Copy code
 document.addEventListener("DOMContentLoaded", function () {
     const mesasContainer = document.getElementById("mesas");
     const menuPopup = document.getElementById("menuPopup");
@@ -27,9 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { nombre: "Jugo de Naranja", precio: 4, categoria: "Jugos" },
         { nombre: "Té Verde", precio: 2, categoria: "Te" },
         { nombre: "Infusión de Manzanilla", precio: 2.5, categoria: "Infusiones" },
-        { nombre: "Pizza", precio: 8, categoria: "Comidas" }, // Nueva categoría
-        { nombre: "Hamburguesa", precio: 7, categoria: "Comidas" }, // Nueva categoría
-        { nombre: "Ensalada", precio: 6, categoria: "Comidas" }, // Nueva categoría
         // Agrega más productos según sea necesario
     ];
 
@@ -66,19 +66,19 @@ document.addEventListener("DOMContentLoaded", function () {
         renderMesas();
     });
 
-    // Cambiar el color de la mesa al abrirla o cerrarla
+    // Cambiar el color de la mesa al abrirla
     abrirMesaBtn.addEventListener("click", function () {
         if (currentMesa) {
             if (currentMesa.classList.contains("abierta")) {
-                currentMesa.classList.remove("abierta"); // Cerrar la mesa
+                // Cerrar la mesa
+                currentMesa.classList.remove("abierta");
                 currentMesa.style.backgroundColor = "red"; // Cambiar a color rojo
-                menuPopup.style.display = "none"; // Cerrar el menú
-                overlay.style.display = "none"; // Cerrar el overlay
+                abrirMesaBtn.textContent = "Abrir Mesa"; // Cambiar texto a "Abrir Mesa"
             } else {
-                currentMesa.classList.add("abierta"); // Abrir la mesa
+                // Abrir la mesa
+                currentMesa.classList.add("abierta");
                 currentMesa.style.backgroundColor = "green"; // Cambiar a color verde
-                menuPopup.style.display = "none"; // Cerrar el menú
-                overlay.style.display = "none"; // Cerrar el overlay
+                abrirMesaBtn.textContent = "Cerrar Mesa"; // Cambiar texto a "Cerrar Mesa"
             }
         }
     });
