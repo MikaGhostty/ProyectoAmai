@@ -28,19 +28,26 @@ body {
 .mesa {
     width: 70px;
     height: 70px;
-    background-color: red; /* Cambiado a rojo para que las mesas inicien en rojo */
+    background-color: red; /* Color inicial de la mesa */
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 10px; /* Esquinas redondeadas */
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
+    border: 1px solid black; /* Borde negro fino */
 }
 
 .mesa.abierta {
-    background-color: green;
+    background-color: green; /* Color cuando la mesa está abierta */
+}
+
+.mesa span {
+    border: 1px solid black; /* Borde negro fino alrededor del número */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas para el número */
 }
 
 /* Efecto de desenfoque */
@@ -66,9 +73,10 @@ body {
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 300px; /* Reducido en un 30% de 300px */
-    max-height: 84%; /* Reducido en un 30% de 120% */
+    width: 300px;
+    text-align: center;
     overflow-y: auto; /* Permitir desplazamiento */
+    max-height: 80%; /* Limitar la altura del menú */
 }
 
 .menu-popup input {
@@ -81,6 +89,49 @@ button {
     padding: 5px 10px;
     margin: 5px;
     cursor: pointer;
+}
+
+/* Estilos para el menú de productos */
+#cartaPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 600px; /* Ancho del menú de productos */
+    max-height: 80%; /* Limitar la altura del menú */
+    overflow-y: auto; /* Permitir desplazamiento */
+    display: flex; /* Usar flexbox para organizar secciones y productos */
+}
+
+/* Contenedor de secciones y productos */
+#seccionesContainer {
+    width: 150px; /* Ancho de las secciones */
+    border-right: 1px solid #ccc; /* Línea divisoria */
+    padding-right: 10px; /* Espaciado a la derecha */
+}
+
+.seccion {
+    padding: 10px;
+    background-color: #3498db; /* Color de fondo de las secciones */
+    color: white;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 5px; /* Esquinas redondeadas */
+    text-align: center;
+}
+
+.seccion:hover {
+    background-color: #2980b9; /* Color al pasar el mouse */
+}
+
+#productosContainer {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding-left: 10px; /* Espaciado a la izquierda */
 }
 
 .producto {
