@@ -74,8 +74,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cambiar el color de la mesa al abrirla
     abrirMesaBtn.addEventListener("click", function () {
         if (currentMesa) {
-            currentMesa.classList.add("abierta");
-            currentMesa.style.backgroundColor = "green"; // Cambiar a color verde
+            if (currentMesa.classList.contains("abierta")) {
+                currentMesa.classList.remove("abierta"); // Cerrar la mesa
+                currentMesa.style.backgroundColor = "red"; // Cambiar a color rojo
+            } else {
+                currentMesa.classList.add("abierta");
+                currentMesa.style.backgroundColor = "green"; // Cambiar a color verde
+            }
             menuPopup.style.display = "none";
             overlay.style.display = "none";
         }
