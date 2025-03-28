@@ -1,6 +1,3 @@
-
-Run
-Copy code
 document.addEventListener("DOMContentLoaded", function () {
     const mesasContainer = document.getElementById("mesas");
     const menuPopup = document.getElementById("menuPopup");
