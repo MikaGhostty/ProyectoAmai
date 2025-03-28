@@ -114,3 +114,19 @@ body {
     padding-left: 10px; /* Espaciado a la izquierda */
     flex-grow: 1; /* Ocupa el espacio restante */
 }
+
+.producto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.producto button {
+    margin: 0 5px;
+}
+
+#carrito {
+    margin-top: 20px;
+    text-align: left;
+}

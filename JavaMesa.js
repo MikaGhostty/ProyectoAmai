@@ -38,19 +38,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const categorias = [...new Set(productos.map(p => p.categoria))]; // Obtener categorías únicas
         seccionesContainer.innerHTML = ""; // Limpiar el contenedor de secciones
 
-    categorias.forEach(categoria => {
-        const seccionDiv = document.createElement("div");
-        seccionDiv.classList.add("seccion");
-        seccionDiv.textContent = categoria;
+        categorias.forEach(categoria => {
+            const seccionDiv = document.createElement("div");
+            seccionDiv.classList.add("seccion");
+            seccionDiv.textContent = categoria;
 
-        // Evento para mostrar productos de la sección
-        seccionDiv.addEventListener("click", function () {
-            mostrarProductosPorCategoria(categoria);
+            // Evento para mostrar productos de la sección
+            seccionDiv.addEventListener("click", function () {
+                mostrarProductosPorCategoria(categoria);
+            });
+
+            seccionesContainer.appendChild(seccionDiv);
         });
-
-        seccionesContainer.appendChild(seccionDiv);
-    });
-}
+    }
 
     // Mostrar productos por categoría
     function mostrarProductosPorCategoria(categoria) {
