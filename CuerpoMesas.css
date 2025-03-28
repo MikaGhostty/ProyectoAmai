@@ -40,14 +40,15 @@ body {
     border: 1px solid black; /* Borde negro fino */
 }
 
-.mesa.abierta {
-    background-color: green; /* Color cuando la mesa está abierta */
-}
-
 .mesa span {
-    border: 1px solid black; /* Borde negro fino alrededor del número */
+    border: 1px solid white; /* Borde blanco alrededor del número */
     padding: 5px; /* Espaciado interno */
     border-radius: 5px; /* Esquinas redondeadas para el número */
+    background-color: transparent; /* Fondo transparente */
+}
+
+.mesa.abierta {
+    background-color: green; /* Color cuando la mesa está abierta */
 }
 
 /* Efecto de desenfoque */

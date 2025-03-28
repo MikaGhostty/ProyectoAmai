@@ -11,24 +11,10 @@
         <button id="toggleArea">Terraza</button>
         <h1 id="areaTitle">Salón</h1>
         <div id="mesas" class="mesas-container"></div> <!-- Contenedor para las mesas -->
-        <button id="verCarta">Ver Carta</button> <!-- Botón para ver la carta -->
     </div>
 
     <!-- Overlay para efecto de desenfoque -->
     <div id="overlay"></div>
-
-    <!-- Menú emergente para la carta de productos -->
-    <div id="cartaPopup" class="menu-popup">
-        <h2>Carta de Productos</h2>
-        <div id="seccionesContainer"></div> <!-- Contenedor para las secciones -->
-        <div id="productosContainer"></div> <!-- Contenedor para los productos -->
-        <div id="carrito">
-            <h3>Carrito</h3>
-            <ul id="carritoList"></ul>
-            <p>Total: <span id="totalPrecio">0</span></p>
-            <button id="cerrarCarta">Cerrar</button>
-        </div>
-    </div>
 
     <!-- Menú emergente para la mesa -->
     <div id="menuPopup" class="menu-popup">
@@ -42,6 +28,20 @@
         </div>
         <label>Mesero: <input type="text" id="meseroNombre"></label>
         <label>Cliente: <input type="text" id="clienteNombre"></label>
+        <button id="verCarta">Ver Carta</button> <!-- Botón para ver la carta dentro del menú de la mesa -->
+    </div>
+
+    <!-- Menú emergente para la carta de productos -->
+    <div id="cartaPopup" class="menu-popup">
+        <h2>Carta de Productos</h2>
+        <div id="seccionesContainer"></div> <!-- Contenedor para las secciones -->
+        <div id="productosContainer"></div> <!-- Contenedor para los productos -->
+        <div id="carrito">
+            <h3>Carrito</h3>
+            <ul id="carritoList"></ul>
+            <p>Total: <span id="totalPrecio">0</span></p>
+            <button id="cerrarCarta">Cerrar</button>
+        </div>
     </div>
 
     <script src="JavaMesa.js"></script> <!-- Asegúrate de que el nombre del archivo JavaScript sea correcto -->
