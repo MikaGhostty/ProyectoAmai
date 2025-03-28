@@ -73,46 +73,23 @@ body {
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
-    width: 300px;
-    text-align: center;
-    overflow-y: auto; /* Permitir desplazamiento */
-    max-height: 80%; /* Limitar la altura del menú */
-}
-
-.menu-popup input {
-    width: 80%;
-    padding: 5px;
-    margin-top: 5px;
-}
-
-button {
-    padding: 5px 10px;
-    margin: 5px;
-    cursor: pointer;
-}
-
-/* Estilos para el menú de productos */
-#cartaPopup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    width: 600px; /* Ancho del menú de productos */
+    width: 300px; /* Ancho del menú de productos */
     max-height: 80%; /* Limitar la altura del menú */
     overflow-y: auto; /* Permitir desplazamiento */
-    display: flex; /* Usar flexbox para organizar secciones y productos */
+    z-index: 2; /* Asegurarse de que esté por encima de otros elementos */
 }
 
 /* Contenedor de secciones y productos */
 #seccionesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 150px; /* Ancho de las secciones */
+    height: 100%;
+    background: transparent; /* Fondo transparente */
+    padding: 20px;
     border-right: 1px solid #ccc; /* Línea divisoria */
-    padding-right: 10px; /* Espaciado a la derecha */
+    z-index: 1; /* Asegurarse de que esté detrás del menú */
 }
 
 .seccion {
@@ -130,7 +107,7 @@ button {
 }
 
 #productosContainer {
-    flex-grow: 1; /* Ocupa el espacio restante */
+    margin-left: 160px; /* Espacio para las secciones */
     padding-left: 10px; /* Espaciado a la izquierda */
 }
 

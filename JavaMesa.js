@@ -205,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
     verCartaBtn.addEventListener("click", function () {
         mostrarCarta();
         cartaPopup.style.display = "block"; // Mostrar la carta
+        overlay.style.display = "block"; // Mostrar el overlay
     });
 
     // Mostrar productos en la carta
