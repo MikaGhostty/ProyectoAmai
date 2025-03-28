@@ -133,6 +133,7 @@ body {
     display: flex;
     flex-direction: column; /* Organizar en columna */
     align-items: center; /* Centrar productos */
+    max-height: 400px; /* Limitar la altura del contenedor de productos */
 }
 
 /* Diseño de los productos */
