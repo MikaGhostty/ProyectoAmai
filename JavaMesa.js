@@ -36,14 +36,24 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 1; i <= 15; i++) {
             let mesa = document.createElement("div");
             mesa.classList.add("mesa");
-            mesa.textContent = i; // Asignar el número de la mesa
+            mesa.innerHTML = `<span>${i}</span>`; // Usar un span para el número
             mesa.dataset.numero = i;
 
             // Evento para abrir el menú emergente
             mesa.addEventListener("click", function () {
                 currentMesa = mesa;
                 mesaNumero.textContent = mesa.dataset.numero;
-                contadorPersonas.textContent = "0"; // Resetear contador de personas
+
+                // Cargar datos de localStorage
+                const datosMesa = localStorage.getItem(`mesa_${mesa.dataset.numero}`);
+                if (datosMesa) {
+                    const { cantidad, nombres } = JSON.parse(datosMesa);
+                    contadorPersonas.textContent = cantidad;
+                    // Aquí puedes mostrar los nombres si es necesario
+                } else {
+                    contadorPersonas.textContent = "0"; // Resetear contador de personas
+                }
+
                 menuPopup.style.display = "block";
                 overlay.style.display = "block";
             });
@@ -66,30 +76,60 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cambiar el color de la mesa al abrirla
     abrirMesaBtn.addEventListener("click", function () {
         if (currentMesa) {
+            const mesaNumero = currentMesa.dataset.numero;
+            const cantidadPersonas = parseInt(contadorPersonas.textContent);
+            const meseroNombre = document.getElementById("meseroNombre").value;
+            const clienteNombre = document.getElementById("clienteNombre").value;
+
             if (currentMesa.classList.contains("abierta")) {
                 // Cerrar la mesa
                 currentMesa.classList.remove("abierta");
                 currentMesa.style.backgroundColor = "red"; // Cambiar a color rojo
                 abrirMesaBtn.textContent = "Abrir Mesa"; // Cambiar texto a "Abrir Mesa"
+                // Limpiar datos de localStorage
+                localStorage.removeItem(`mesa_${mesaNumero}`);
             } else {
                 // Abrir la mesa
                 currentMesa.classList.add("abierta");
                 currentMesa.style.backgroundColor = "green"; // Cambiar a color verde
                 abrirMesaBtn.textContent = "Cerrar Mesa"; // Cambiar texto a "Cerrar Mesa"
+
+                // Guardar datos en localStorage
+                guardarDatos(mesaNumero, cantidadPersonas, { mesero: meseroNombre, cliente: clienteNombre });
             }
-            // No cerrar el menú al abrir/cerrar la mesa
         }
     });
+
+    // Guardar datos en localStorage
+    function guardarDatos(mesaNumero, cantidadPersonas, nombres) {
+        const datosMesa = {
+            cantidad: cantidadPersonas,
+            nombres: nombres
+        };
+        localStorage.setItem(`mesa_${mesaNumero}`, JSON.stringify(datosMesa));
+    }
 
     // Control de personas en la mesa
     menosPersonas.addEventListener("click", function () {
         let count = parseInt(contadorPersonas.textContent);
-        if (count > 0) contadorPersonas.textContent = count - 1;
+        if (count > 0) {
+            contadorPersonas.textContent = count - 1;
+            // Guardar datos en localStorage
+            if (currentMesa) {
+                const mesaNumero = currentMesa.dataset.numero;
+                guardarDatos(mesaNumero, count - 1, { mesero: document.getElementById("meseroNombre").value, cliente: document.getElementById("clienteNombre").value });
+            }
+        }
     });
 
     masPersonas.addEventListener("click", function () {
         let count = parseInt(contadorPersonas.textContent);
         contadorPersonas.textContent = count + 1;
+        // Guardar datos en localStorage
+        if (currentMesa) {
+            const mesaNumero = currentMesa.dataset.numero;
+            guardarDatos(mesaNumero, count + 1, { mesero: document.getElementById("meseroNombre").value, cliente: document.getElementById("clienteNombre").value });
+        }
     });
 
     // Mostrar la carta de productos
@@ -194,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Cerrar el menú emergente al hacer clic fuera
-    overlay.addEventListener("click", function () {
+    overlay.addEventListener("click", function () {   
         menuPopup.style.display = "none";
         cartaPopup.style.display = "none";
         overlay.style.display = "none";
