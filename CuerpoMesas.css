@@ -79,16 +79,19 @@ body {
     max-height: 80%; /* Limitar la altura */
     overflow-y: auto; /* Permitir desplazamiento */
     z-index: 2; /* Asegurarse de que esté por encima de otros elementos */
+    display: flex; /* Usar flexbox para organizar secciones y productos */
 }
 
 /* Contenedor de secciones */
 #seccionesContainer {
     width: 150px; /* Ancho de las secciones */
-    height: 100%;
+    height: auto; /* Ajustar altura automáticamente */
     background: transparent; /* Fondo transparente */
-    padding: 20px;
+    padding: 10px; /* Espaciado interno */
     border-right: 1px solid #ccc; /* Línea divisoria */
-    float: left; /* Flotar a la izquierda */
+    margin-right: 10px; /* Espacio entre secciones y productos */
+    display: inline-block; /* Mantener en línea con los productos */
+    vertical-align: top; /* Alinear al top */
 }
 
 .seccion {
@@ -99,15 +102,18 @@ body {
     cursor: pointer;
     border-radius: 5px; /* Esquinas redondeadas */
     text-align: center;
+    list-style-type: none; /* Quitar viñetas por defecto */
 }
 
 .seccion:hover {
     background-color: #2980b9; /* Color al pasar el mouse */
 }
 
+/* Contenedor de productos */
 #productosContainer {
-    margin-left: 160px; /* Espacio para las secciones */
+    margin-left: 10px; /* Espacio para las secciones */
     padding-left: 10px; /* Espaciado a la izquierda */
+    flex-grow: 1; /* Ocupa el espacio restante */
 }
 
 .producto {
