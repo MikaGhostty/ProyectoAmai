@@ -95,27 +95,27 @@ body {
 
 /* Pestañas (categorías) en la izquierda */
 #seccionesContainer {
+    position: absolute; /* Lo posiciona fuera del popup */
+    left: 20px; /* Ajusta la distancia desde el borde izquierdo */
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    width: 100px;
-    background-color: #e0e0e0;
-    padding: 10px;
-    border-radius: 10px 0 0 10px;
+    gap: 10px; /* Espaciado entre categorías */
 }
 
 .seccion {
+    background-color: #f4f4f4;
     padding: 10px;
-    background-color: #3498db;
-    color: white;
-    margin-bottom: 5px;
-    cursor: pointer;
     border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     text-align: center;
-    transition: background 0.3s;
+    width: 120px; /* Ajusta el tamaño de las pestañas */
 }
 
 .seccion:hover {
-    background-color: #2980b9;
+    background-color: #ddd;
 }
 
 /* Contenedor de productos */
