@@ -95,7 +95,7 @@ body {
 .carta-container {
     display: flex; /* Usar flexbox para organizar las tres secciones */
     width: 100%; /* Ancho total */
-    height: 100%; /* Altura total */
+    height: 80%; /* Altura total */
 }
 
 /* Estilo para las secciones */
