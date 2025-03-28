@@ -38,31 +38,31 @@
             <label>Cliente:</label>
             <input type="text" id="clienteNombre">
         </div>
-        
+
         <div class="menu-popup-buttons">
             <button id="verCarta">Ver Carta</button>
             <button id="cerrarMenu">Cerrar</button> <!-- Botón para cerrar el menú de la mesa -->
         </div>
     </div>
 
-    <!-- Menú emergente para la carta de productos -->
-    <div id="cartaPopup" class="menu-popup" style="display: none;">
-        <h2>AmaiMenu</h2>
-        <div class="carta-container">
-            <div id="seccionesContainer" class="secciones"> <!-- Contenedor para las secciones -->
-                <!-- Las secciones se generarán aquí -->
-            </div>
-            <div id="productosContainer" class="productos"> <!-- Contenedor para los productos -->
-                <!-- Los productos se generarán aquí -->
-            </div>
-            <div id="carrito" class="carrito"> <!-- Contenedor para el carrito -->
-                <h3>Carrito</h3>
-                <ul id="carritoList"></ul>
-                <p>Total: <span id="totalPrecio">0</span></p>
-                <button id="cerrarCarta">Cerrar</button>
-            </div>
+<!-- Menú emergente para la carta de productos -->
+<div id="cartaPopup" class="menu-popup" style="display: none;">
+    <h2>AmaiMenu</h2>
+    <div class="carta-container">
+        <div id="seccionesContainer" class="secciones"> <!-- Contenedor para las secciones -->
+            <!-- Las secciones se generarán aquí -->
+        </div>
+        <div id="productosContainer" class="productos"> <!-- Contenedor para los productos -->
+            <!-- Los productos se generarán aquí -->
+        </div>
+        <div id="carrito" class="carrito"> <!-- Contenedor para el carrito -->
+            <h3>Carrito de la Mesa <span id="mesaNumeroCarrito"></span></h3>
+            <ul id="carritoList"></ul>
+            <p>Total: <span id="totalPrecio">0</span></p>
+            <button id="vaciarCarrito">Vaciar Carrito</button>
         </div>
     </div>
+</div>
 
     <script src="JavaMesa.js"></script> <!-- Asegúrate de que el archivo JS existe -->
 </body>

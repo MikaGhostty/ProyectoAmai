@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentMesa = null;
     let area = "salon";
-    let carrito = [];
+    let carritos = []; // Arreglo para almacenar carritos de cada mesa
 
     // Ejemplo de productos
     const productos = [
@@ -97,11 +97,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cargar el carrito desde localStorage
     function cargarCarritoDesdeLocalStorage() {
-        const carritoEnLocalStorage = localStorage.getItem("carrito");
+        const carritoEnLocalStorage = localStorage.getItem("carritos");
         if (carritoEnLocalStorage) {
-            carrito = JSON.parse(carritoEnLocalStorage);
-            actualizarCarrito();
+            carritos = JSON.parse(carritoEnLocalStorage);
         }
+    }
+
+    // Guardar el carrito en localStorage
+    function guardarCarritoEnLocalStorage() {
+        localStorage.setItem("carritos", JSON.stringify(carritos));
     }
 
     // Generar secciones
@@ -147,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cantidadSpan.textContent = cantidad + 1;
 
                 // Agregar al carrito
-                agregarAlCarrito(nombreProducto);
+                agregarAlCarrito(nombreProducto, currentMesa.dataset.numero);
             });
         });
 
@@ -160,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     cantidadSpan.textContent = cantidad - 1;
 
                     // Quitar del carrito
-                    quitarDelCarrito(nombreProducto);
+                    quitarDelCarrito(nombreProducto, currentMesa.dataset.numero);
                 }
             });
         });
@@ -311,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cantidadSpan.textContent = cantidad + 1;
 
                 // Agregar al carrito
-                agregarAlCarrito(nombreProducto);
+                agregarAlCarrito(nombreProducto, currentMesa.dataset.numero);
             });
         });
 
@@ -324,69 +328,73 @@ document.addEventListener("DOMContentLoaded", function () {
                     cantidadSpan.textContent = cantidad - 1;
 
                     // Quitar del carrito
-                    quitarDelCarrito(nombreProducto);
+                    quitarDelCarrito(nombreProducto, currentMesa.dataset.numero);
                 }
             });
         });
     }
 
     // Agregar producto al carrito
-    function agregarAlCarrito(nombreProducto) {
-        const productoEnCarrito = carrito.find(item => item.nombre === nombreProducto);
-        if (productoEnCarrito) {
-            productoEnCarrito.cantidad += 1;
+    function agregarAlCarrito(nombreProducto, mesaNumero) {
+        const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
+        if (carritoMesa) {
+            const productoEnCarrito = carritoMesa.productos.find(item => item.nombre === nombreProducto);
+            if (productoEnCarrito) {
+                productoEnCarrito.cantidad += 1;
+            } else {
+                carritoMesa.productos.push({ nombre: nombreProducto, cantidad: 1 });
+            }
         } else {
-            carrito.push({ nombre: nombreProducto, cantidad: 1 });
+            carritos.push({ mesaNumero, productos: [{ nombre: nombreProducto, cantidad: 1 }] });
         }
-        actualizarCarrito();
+        actualizarCarrito(mesaNumero);
         guardarCarritoEnLocalStorage(); // Guardar el carrito en localStorage
     }
 
     // Quitar producto del carrito
-    function quitarDelCarrito(nombreProducto) {
-        const productoEnCarrito = carrito.find(item => item.nombre === nombreProducto);
-        if (productoEnCarrito) {
-            productoEnCarrito.cantidad -= 1;
-            if (productoEnCarrito.cantidad === 0) {
-                carrito = carrito.filter(item => item.nombre !== nombreProducto);
+    function quitarDelCarrito(nombreProducto, mesaNumero) {
+        const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
+        if (carritoMesa) {
+            const productoEnCarrito = carritoMesa.productos.find(item => item.nombre === nombreProducto);
+            if (productoEnCarrito) {
+                productoEnCarrito.cantidad -= 1;
+                if (productoEnCarrito.cantidad === 0) {
+                    carritoMesa.productos = carritoMesa.productos.filter(item => item.nombre !== nombreProducto);
+                }
             }
         }
-        actualizarCarrito();
+        actualizarCarrito(mesaNumero);
         guardarCarritoEnLocalStorage(); // Guardar el carrito en localStorage
     }
 
     // Actualizar el carrito
-    function actualizarCarrito() {
-        carritoList.innerHTML = ""; // Limpiar la lista del carrito
-        let total = 0;
+    function actualizarCarrito(mesaNumero) {
+        const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
+        if (carritoMesa) {
+            carritoList.innerHTML = ""; // Limpiar la lista del carrito
+            let total = 0;
 
-        carrito.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = `${item.nombre} - Cantidad: ${item.cantidad}`;
-            carritoList.appendChild(li);
-            const producto = productos.find(p => p.nombre === item.nombre);
-            total += producto.precio * item.cantidad;
-        });
+            carritoMesa.productos.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.nombre} - Cantidad: ${item.cantidad}`;
+                carritoList.appendChild(li);
+                const producto = productos.find(p => p.nombre === item.nombre);
+                total += producto.precio * item.cantidad;
+            });
 
-        totalPrecio.textContent = total.toFixed(2); // Mostrar el total
-    }
-
-    // Guardar el carrito en localStorage
-    function guardarCarritoEnLocalStorage() {
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-    }
-
-    // Cargar el carrito desde localStorage
-    function cargarCarritoDesdeLocalStorage() {
-        const carritoEnLocalStorage = localStorage.getItem("carrito");
-        if (carritoEnLocalStorage) {
-            carrito = JSON.parse(carritoEnLocalStorage);
-            actualizarCarrito();
+            totalPrecio.textContent = total.toFixed(2); // Mostrar el total
         }
     }
 
-    // Cargar el carrito al iniciar la aplicación
-    cargarCarritoDesdeLocalStorage();
+    // Vaciar el carrito
+    function vaciarCarrito(mesaNumero) {
+        const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
+        if (carritoMesa) {
+            carritoMesa.productos = [];
+            actualizarCarrito(mesaNumero);
+            guardarCarritoEnLocalStorage(); // Guardar el carrito en localStorage
+        }
+    }
 
     // Cerrar el menú de la carta
     cerrarCartaBtn.addEventListener("click", function () {
