@@ -95,7 +95,7 @@ body {
 .carta-container {
     display: flex; /* Usar flexbox para organizar las tres secciones */
     width: 100%; /* Ancho total */
-    height: 80%; /* Altura total */
+    height: 100%; /* Altura total */
 }
 
 /* Estilo para las secciones */
@@ -184,4 +184,22 @@ body {
 
 #totalPrecio {
     font-weight: bold;
+}
+
+/* Estilo para la información de la mesa */
+.mesa-info {
+    margin: 10px 0; /* Espaciado entre los campos */
+    text-align: left; /* Alinear texto a la izquierda */
+}
+
+.mesa-info label {
+    display: block; /* Hacer que la etiqueta ocupe toda la línea */
+    margin-bottom: 5px; /* Espaciado entre la etiqueta y el campo */
+}
+
+.mesa-info input {
+    width: 100%; /* Hacer que el campo ocupe todo el ancho disponible */
+    padding: 5px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde del campo */
+    border-radius: 5px; /* Esquinas redondeadas */
 }

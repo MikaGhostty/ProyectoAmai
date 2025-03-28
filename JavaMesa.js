@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const contadorPersonas = document.getElementById("contadorPersonas");
     const toggleAreaBtn = document.getElementById("toggleArea");
     const areaTitle = document.getElementById("areaTitle");
+    const meseroNombreInput = document.getElementById("meseroNombre");
+    const clienteNombreInput = document.getElementById("clienteNombre");
 
     let currentMesa = null;
     let area = "salon";
@@ -174,8 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (datosMesa) {
                     const { cantidad, nombres } = JSON.parse(datosMesa);
                     contadorPersonas.textContent = cantidad;
+                    meseroNombreInput.value = nombres.mesero || ""; // Cargar mesero
+                    clienteNombreInput.value = nombres.cliente || ""; // Cargar cliente
                 } else {
                     contadorPersonas.textContent = "0"; // Resetear contador de personas
+                    meseroNombreInput.value = ""; // Limpiar mesero
+                    clienteNombreInput.value = ""; // Limpiar cliente
                 }
 
                 menuPopup.style.display = "block";
@@ -203,8 +209,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentMesa) {
             const mesaNumero = currentMesa.dataset.numero;
             const cantidadPersonas = parseInt(contadorPersonas.textContent);
-            const meseroNombre = document.getElementById("meseroNombre").value;
-            const clienteNombre = document.getElementById("clienteNombre").value;
+            const meseroNombre = meseroNombreInput.value;
+            const clienteNombre = clienteNombreInput.value;
 
             if (currentMesa.classList.contains("abierta")) {
                 // Cerrar la mesa
@@ -242,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Guardar datos en localStorage
             if (currentMesa) {
                 const mesaNumero = currentMesa.dataset.numero;
-                guardarDatos(mesaNumero, count - 1, { mesero: document.getElementById("meseroNombre").value, cliente: document.getElementById("clienteNombre").value });
+                guardarDatos(mesaNumero, count - 1, { mesero: meseroNombreInput.value, cliente: clienteNombreInput.value });
             }
         }
     });
@@ -253,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Guardar datos en localStorage
         if (currentMesa) {
             const mesaNumero = currentMesa.dataset.numero;
-            guardarDatos(mesaNumero, count + 1, { mesero: document.getElementById("meseroNombre").value, cliente: document.getElementById("clienteNombre").value });
+            guardarDatos(mesaNumero, count + 1, { mesero: meseroNombreInput.value, cliente: clienteNombreInput.value });
         }
     });
 
@@ -323,6 +329,7 @@ document.addEventListener("DOMContentLoaded", function () {
             carrito.push({ nombre: nombreProducto, cantidad: 1 });
         }
         actualizarCarrito();
+        guardarCarritoEnLocalStorage(); // Guardar el carrito en localStorage
     }
 
     // Quitar producto del carrito
@@ -335,6 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
         actualizarCarrito();
+        guardarCarritoEnLocalStorage(); // Guardar el carrito en localStorage
     }
 
     // Actualizar el carrito
@@ -352,6 +360,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         totalPrecio.textContent = total.toFixed(2); // Mostrar el total
     }
+
+    // Guardar el carrito en localStorage
+    function guardarCarritoEnLocalStorage() {
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+
+    // Cargar el carrito desde localStorage
+    function cargarCarritoDesdeLocalStorage() {
+        const carritoEnLocalStorage = localStorage.getItem("carrito");
+        if (carritoEnLocalStorage) {
+            carrito = JSON.parse(carritoEnLocalStorage);
+            actualizarCarrito();
+        }
+    }
+
+    // Cargar el carrito al iniciar la aplicación
+    cargarCarritoDesdeLocalStorage();
 
     // Cerrar el menú de la carta
     cerrarCartaBtn.addEventListener("click", function () {
