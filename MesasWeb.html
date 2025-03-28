@@ -42,15 +42,19 @@
     <!-- Menú emergente para la carta de productos -->
     <div id="cartaPopup" class="menu-popup" style="display: none;">
         <h2>Carta de Productos</h2>
-        <div id="seccionesContainer"></div> <!-- Contenedor para las secciones -->
-        <div id="productosContainer"></div> <!-- Contenedor para los productos -->
-
-        <!-- Carrito de compras -->
-        <div id="carrito">
-            <h3>Carrito</h3>
-            <ul id="carritoList"></ul>
-            <p>Total: <span id="totalPrecio">0</span></p>
-            <button id="cerrarCarta">Cerrar</button>
+        <div class="carta-container">
+            <div id="seccionesContainer" class="secciones"> <!-- Contenedor para las secciones -->
+                <!-- Las secciones se generarán aquí -->
+            </div>
+            <div id="productosContainer" class="productos"> <!-- Contenedor para los productos -->
+                <!-- Los productos se generarán aquí -->
+            </div>
+            <div id="carrito" class="carrito"> <!-- Contenedor para el carrito -->
+                <h3>Carrito</h3>
+                <ul id="carritoList"></ul>
+                <p>Total: <span id="totalPrecio">0</span></p>
+                <button id="cerrarCarta">Cerrar</button>
+            </div>
         </div>
     </div>
 

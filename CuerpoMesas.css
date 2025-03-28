@@ -81,7 +81,7 @@ body {
 /* Menú de la carta de productos */
 #cartaPopup {
     display: none; /* Ocultar por defecto */
-    width: 300px; /* Ancho del menú de productos */
+    width: 600px; /* Ancho total del menú de productos */
     height: 500px; /* Altura del menú de productos */
     display: flex; /* Usar flexbox para organizar secciones y productos */
     background: white;
@@ -91,9 +91,16 @@ body {
     z-index: 2;
 }
 
-/* Pestañas (categorías) en la izquierda */
-#seccionesContainer {
-    width: 120px; /* Ancho de las secciones */
+/* Contenedor principal del tríptico */
+.carta-container {
+    display: flex; /* Usar flexbox para organizar las tres secciones */
+    width: 100%; /* Ancho total */
+    height: 100%; /* Altura total */
+}
+
+/* Estilo para las secciones */
+.secciones {
+    width: 200px; /* Ancho de las secciones */
     height: auto; /* Ajustar altura automáticamente */
     background: transparent; /* Fondo transparente */
     padding: 10px; /* Espaciado interno */
@@ -119,7 +126,7 @@ body {
 }
 
 /* Contenedor de productos */
-#productosContainer {
+.productos {
     flex-grow: 1; /* Ocupa el espacio restante */
     padding: 10px;
     overflow-y: auto; /* Permitir desplazamiento */
@@ -145,14 +152,12 @@ body {
 }
 
 /* Carrito de compras */
-#carrito {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 280px;
-    background: #f8f8f8;
+.carrito {
+    width: 200px; /* Ancho del carrito */
     padding: 10px;
+    border-left: 1px solid #ccc; /* Línea divisoria */
+    overflow-y: auto; /* Permitir desplazamiento */
+    background: #f8f8f8;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
