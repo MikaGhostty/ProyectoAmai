@@ -303,5 +303,6 @@ document.addEventListener("DOMContentLoaded", function () {
     overlay.addEventListener("click", function () {
         cartaPopup.style.display = "none"; // Ocultar el menú de la carta
         overlay.style.display = "none"; // Ocultar el overlay
+        menuPopup.style.display = "none"; // Ocultar el menú de la mesa
     });
 });

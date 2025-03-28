@@ -16,10 +16,10 @@
     </div>
 
     <!-- Overlay para desenfoque al abrir popups -->
-    <div id="overlay"></div>
+    <div id="overlay" style="display: none;"></div>
 
     <!-- Menú emergente para la mesa seleccionada -->
-    <div id="menuPopup" class="menu-popup">
+    <div id="menuPopup" class="menu-popup" style="display: none;">
         <h2>Mesa <span id="mesaNumero"></span></h2>
         <button id="abrirMesa">Abrir Mesa</button>
 
@@ -35,17 +35,15 @@
 
         <div class="menu-popup-buttons">
             <button id="verCarta">Ver Carta</button>
-            <button id="cerrarMenu">Cerrar</button> <!-- Nuevo botón para cerrar -->
+            <button id="cerrarMenu">Cerrar</button> <!-- Botón para cerrar el menú de la mesa -->
         </div>
     </div>
 
-    <!-- Contenedor de categorías (Puesto fuera del popup para estar a la izquierda) -->
-    <div id="seccionesContainer"></div> 
-
     <!-- Menú emergente para la carta de productos -->
-    <div id="cartaPopup" class="menu-popup">
-        <h2>Carta</h2>
-        <div id="productosContainer"></div> <!-- Productos por categoría -->
+    <div id="cartaPopup" class="menu-popup" style="display: none;">
+        <h2>Carta de Productos</h2>
+        <div id="seccionesContainer"></div> <!-- Contenedor para las secciones -->
+        <div id="productosContainer"></div> <!-- Contenedor para los productos -->
 
         <!-- Carrito de compras -->
         <div id="carrito">

@@ -28,49 +28,49 @@ body {
 .mesa {
     width: 70px;
     height: 70px;
-    background-color: red;
+    background-color: red; /* Color inicial de la mesa */
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 10px; /* Esquinas redondeadas */
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-    border: 1px solid black;
+    border: 1px solid black; /* Borde negro fino */
 }
 
 .mesa span {
-    border: 1px solid white;
-    padding: 5px;
-    border-radius: 5px;
-    background-color: transparent;
+    border: 1px solid white; /* Borde blanco alrededor del número */
+    padding: 5px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas para el número */
+    background-color: transparent; /* Fondo transparente */
 }
 
 .mesa.abierta {
-    background-color: green;
+    background-color: green; /* Color cuando la mesa está abierta */
 }
 
 /* Efecto de desenfoque */
 #overlay {
-    display: none;
+    display: none; /* Ocultar por defecto */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    z-index: 1; /* Asegurarse de que esté por encima de otros elementos */
 }
 
 /* Menú emergente general */
 .menu-popup {
-    display: none;
+    display: none; /* Ocultar por defecto */
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajustar posición */
     background: white;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -80,52 +80,52 @@ body {
 
 /* Menú de la carta de productos */
 #cartaPopup {
-    display: none;
-    width: 300px;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
+    display: none; /* Ocultar por defecto */
+    width: 300px; /* Ancho del menú de productos */
+    height: 500px; /* Altura del menú de productos */
+    display: flex; /* Usar flexbox para organizar secciones y productos */
     background: white;
     padding: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     z-index: 2;
-    overflow: hidden;
 }
 
 /* Pestañas (categorías) en la izquierda */
 #seccionesContainer {
-    position: absolute; /* Lo posiciona fuera del popup */
-    left: 20px; /* Ajusta la distancia desde el borde izquierdo */
-    top: 50%; /* Centra verticalmente */
-    transform: translateY(-50%);
+    width: 120px; /* Ancho de las secciones */
+    height: auto; /* Ajustar altura automáticamente */
+    background: transparent; /* Fondo transparente */
+    padding: 10px; /* Espaciado interno */
+    border-right: 1px solid #ccc; /* Línea divisoria */
+    margin-right: 10px; /* Espacio entre secciones y productos */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Organizar en columna */
     gap: 10px; /* Espaciado entre categorías */
 }
 
 .seccion {
-    background-color: #f4f4f4;
     padding: 10px;
-    border-radius: 5px;
+    background-color: #3498db; /* Color de fondo de las secciones */
+    color: white;
+    margin-bottom: 5px;
     cursor: pointer;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px; /* Esquinas redondeadas */
     text-align: center;
-    width: 120px; /* Ajusta el tamaño de las pestañas */
 }
 
 .seccion:hover {
-    background-color: #ddd;
+    background-color: #2980b9; /* Color al pasar el mouse */
 }
 
 /* Contenedor de productos */
 #productosContainer {
-    flex-grow: 1;
+    flex-grow: 1; /* Ocupa el espacio restante */
     padding: 10px;
-    overflow-y: auto;
+    overflow-y: auto; /* Permitir desplazamiento */
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* Organizar en columna */
+    align-items: center; /* Centrar productos */
 }
 
 /* Diseño de los productos */
@@ -134,7 +134,7 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     text-align: left;
-    width: 90%;
+    width: 90%; /* Ajustar el tamaño de los productos */
     background: #fff;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
