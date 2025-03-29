@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const areaTitle = document.getElementById("areaTitle");
     const meseroNombreInput = document.getElementById("meseroNombre");
     const clienteNombreInput = document.getElementById("clienteNombre");
+    const mesaNumeroCarrito = document.getElementById("mesaNumeroCarrito");
 
     let currentMesa = null;
     let area = "salon";
@@ -199,6 +200,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 menuPopup.style.display = "block";
                 overlay.style.display = "block";
+                mesaNumeroCarrito.textContent = mesa.dataset.numero; // Actualizar el número de mesa en el carrito
+                actualizarCarrito(mesa.dataset.numero); // Actualizar el carrito al abrir el menú
             });
 
             mesasContainer.appendChild(mesa);
@@ -372,73 +375,72 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Actualizar la cantidad de productos en la carta
-function actualizarCantidadEnCarta(nombreProducto, mesaNumero) {
-    const productosContainer = document.getElementById("productosContainer");
-    const productos = productosContainer.children;
-    for (let i = 0; i < productos.length; i++) {
-        const producto = productos[i];
-        const cantidadSpan = producto.querySelector(`.cantidad[data-nombre="${nombreProducto}"]`);
-        if (cantidadSpan) {
-            const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
-            const productoEnCarrito = carritoMesa.productos.find(item => item.nombre === nombreProducto);
-            if (productoEnCarrito) {
-                cantidadSpan.textContent = productoEnCarrito.cantidad;
-            } else {
-                cantidadSpan.textContent = "0";
+    function actualizarCantidadEnCarta(nombreProducto, mesaNumero) {
+        const productosContainer = document.getElementById("productosContainer");
+        const productos = productosContainer.children;
+        for (let i = 0; i < productos.length; i++) {
+            const producto = productos[i];
+            const cantidadSpan = producto.querySelector(`.cantidad[data-nombre="${nombreProducto}"]`);
+            if (cantidadSpan) {
+                const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
+                const productoEnCarrito = carritoMesa ? carritoMesa.productos.find(item => item.nombre === nombreProducto) : null;
+                cantidadSpan.textContent = productoEnCarrito ? productoEnCarrito.cantidad : "0";
             }
         }
     }
-}
 
-// Actualizar el carrito
-function actualizarCarrito(mesaNumero) {
-    const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
-    if (carritoMesa) {
-        carritoList.innerHTML = ""; // Limpiar la lista del carrito
-        let total = 0;
+    // Actualizar el carrito
+    function actualizarCarrito(mesaNumero) {
+        const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
+        if (carritoMesa) {
+            carritoList.innerHTML = ""; // Limpiar la lista del carrito
+            let total = 0;
 
-        carritoMesa.productos.forEach(item => {
-            const li = document.createElement("li");
-            li.textContent = `${item.nombre} - Cantidad: ${item.cantidad}`;
-            carritoList.appendChild(li);
-            const producto = productos.find(p => p.nombre === item.nombre);
-            total += producto.precio * item.cantidad;
-        });
+            carritoMesa.productos.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.nombre} - Cantidad: ${item.cantidad}`;
+                carritoList.appendChild(li);
+                const producto = productos.find(p => p.nombre === item.nombre);
+                total += producto.precio * item.cantidad;
+            });
 
-        totalPrecio.textContent = total.toFixed(2); // Mostrar el total
+            totalPrecio.textContent = total.toFixed(2); // Mostrar el total
+        }
     }
-}
 
-// Vaciar el carrito
-function vaciarCarrito(mesaNumero) {
-    const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
-    if (carritoMesa) {
-        carritoMesa.productos = [];
-        actualizarCarrito(mesaNumero);
-        guardarCarritoEnLocalStorage(); // Guardar el carrito en localStorage
-        // Actualizar la cantidad de productos en la carta
-        actualizarCantidadEnCarta("", mesaNumero);
+    // Vaciar el carrito
+    function vaciarCarrito(mesaNumero) {
+        const carritoMesa = carritos.find(carrito => carrito.mesaNumero === mesaNumero);
+        if (carritoMesa) {
+            carritoMesa.productos = [];
+            actualizarCarrito(mesaNumero);
+            guardarCarritoEnLocalStorage(); // Guardar el carrito en localStorage
+            // Actualizar la cantidad de productos en la carta
+            actualizarCantidadEnCarta("", mesaNumero);
+        }
     }
-}
 
-// Cerrar el menú de la carta
-cerrarCartaBtn.addEventListener("click", function () {
-    cartaPopup.style.display = "none"; // Ocultar el menú de la carta
-    overlay.style.display = "none"; // Ocultar el overlay
-});
-
-// Cerrar el menú emergente al hacer clic fuera
-overlay.addEventListener("click", function (e) {
-    if (e.target === overlay) {
+    // Cerrar el menú de la carta
+    cerrarCartaBtn.addEventListener("click", function () {
         cartaPopup.style.display = "none"; // Ocultar el menú de la carta
         overlay.style.display = "none"; // Ocultar el overlay
-        menuPopup.style.display = "none"; // Ocultar el menú de la mesa
-    }
-});
+    });
 
-// Cerrar el menú de la mesa
-document.getElementById("cerrarMenu").addEventListener("click", function () {
-    menuPopup.style.display = "none"; // Ocultar el menú de la mesa
-    overlay.style.display = "none"; // Ocultar el overlay
-});
+    // Cerrar el menú emergente al hacer clic fuera
+    overlay.addEventListener("click", function (e) {
+        if (e.target === overlay) {
+            cartaPopup.style.display = "none"; // Ocultar el menú de la carta
+            overlay.style.display = "none"; // Ocultar el overlay
+            menuPopup.style.display = "none"; // Ocultar el menú de la mesa
+        }
+    });
+
+    // Cerrar el menú de la mesa
+    const cerrarMenuBtn = document.getElementById("cerrarMenu");
+    if (cerrarMenuBtn) {
+        cerrarMenuBtn.addEventListener("click", function () {
+            menuPopup.style.display = "none"; // Ocultar el menú de la mesa
+            overlay.style.display = "none"; // Ocultar el overlay
+        });
+    }
 });
