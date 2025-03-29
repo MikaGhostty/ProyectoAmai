@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartaPopup = document.getElementById("cartaPopup");
     const overlay = document.getElementById("overlay");
     const verCartaBtn = document.getElementById("verCarta");
-    const cerrarCartaBtn = document.getElementById("cerrarCarta");
     const productosContainer = document.getElementById("productosContainer");
     const carritoList = document.getElementById("carritoList");
     const totalPrecio = document.getElementById("totalPrecio");
@@ -421,10 +420,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Cerrar el menú de la carta
-    cerrarCartaBtn.addEventListener("click", function () {
-        cartaPopup.style.display = "none"; // Ocultar el menú de la carta
-        overlay.style.display = "none"; // Ocultar el overlay
-    });
+    const cerrarCartaBtn = document.getElementById("cerrarCarta");
+    if (cerrarCartaBtn) {
+        cerrarCartaBtn.addEventListener("click", function () {
+            cartaPopup.style.display = "none"; // Ocultar el menú de la carta
+            overlay.style.display = "none"; // Ocultar el overlay
+        });
+    }
 
     // Cerrar el menú emergente al hacer clic fuera
     overlay.addEventListener("click", function (e) {
